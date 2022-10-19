@@ -3,32 +3,11 @@ FROM us-central1-docker.pkg.dev/cloud-workstations-images/predefined/code-oss:la
 RUN sudo apt update
 RUN sudo apt install -y graphviz
 
-# Extension Pack for Java
-
-## Language Support for Java(TM) by Red Hat https://open-vsx.org/extension/redhat/java
-RUN wget https://open-vsx.org/api/redhat/java/1.11.0/file/redhat.java-1.11.0.vsix && \
-unzip redhat.java-1.11.0.vsix "extension/*" &&\
-mv extension /opt/code-oss/extensions/redhat-java
-
-## Debugger for Java https://open-vsx.org/extension/vscjava/vscode-java-debug
-RUN wget https://open-vsx.org/api/vscjava/vscode-java-debug/0.45.0/file/vscjava.vscode-java-debug-0.45.0.vsix && \
-unzip vscjava.vscode-java-debug-0.45.0.vsix "extension/*" &&\
-mv extension /opt/code-oss/extensions/java-debug
-
-## Test Runner for Java https://open-vsx.org/extension/vscjava/vscode-java-test
-RUN wget https://open-vsx.org/api/vscjava/vscode-java-test/0.37.1/file/vscjava.vscode-java-test-0.37.1.vsix && \
-unzip vscjava.vscode-java-test-0.37.1.vsix "extension/*" &&\
-mv extension /opt/code-oss/extensions/java-test
-
-## Maven for Java https://open-vsx.org/extension/vscjava/vscode-maven
-RUN wget https://open-vsx.org/api/vscjava/vscode-maven/0.39.0/file/vscjava.vscode-maven-0.39.0.vsix && \
-unzip vscjava.vscode-maven-0.39.0.vsix "extension/*" &&\
-mv extension /opt/code-oss/extensions/java-maven
-
-## Project Manager for Java https://open-vsx.org/extension/vscjava/vscode-java-dependency
-RUN wget https://open-vsx.org/api/vscjava/vscode-java-dependency/0.21.0/file/vscjava.vscode-java-dependency-0.21.0.vsix && \
-unzip vscjava.vscode-java-dependency-0.21.0.vsix "extension/*" &&\
-mv extension /opt/code-oss/extensions/java-dependency
+## Extension Pack for Java
+## https://open-vsx.org/extension/vscjava/vscode-java-pack
+RUN wget https://open-vsx.org/api/vscjava/vscode-java-pack/0.25.3/file/vscjava.vscode-java-pack-0.25.3.vsix && \
+unzip vscjava.vscode-java-pack-0.25.3.vsix "extension/*" &&\
+mv extension /opt/code-oss/extensions/java-pack
 
 ## Lombok Annotations Support for VS Code https://open-vsx.org/extension/GabrielBB/vscode-lombok
 RUN wget https://open-vsx.org/api/GabrielBB/vscode-lombok/1.0.1/file/GabrielBB.vscode-lombok-1.0.1.vsix && \
@@ -75,30 +54,10 @@ RUN wget https://open-vsx.org/api/PKief/material-icon-theme/4.21.0/file/PKief.ma
 unzip PKief.material-icon-theme-4.21.0.vsix "extension/*" &&\
 mv extension /opt/code-oss/extensions/material-icon-theme
 
-## GitLens https://open-vsx.org/extension/eamodio/gitlens
-RUN wget https://open-vsx.org/api/eamodio/gitlens/13.0.2/file/eamodio.gitlens-13.0.2.vsix && \
-unzip eamodio.gitlens-13.0.2.vsix "extension/*" &&\
-mv extension /opt/code-oss/extensions/gitlens
-
 ## markdownlint https://open-vsx.org/extension/DavidAnson/vscode-markdownlint
 RUN wget https://open-vsx.org/api/DavidAnson/vscode-markdownlint/0.48.1/file/DavidAnson.vscode-markdownlint-0.48.1.vsix && \
 unzip DavidAnson.vscode-markdownlint-0.48.1.vsix "extension/*" &&\
 mv extension /opt/code-oss/extensions/markdownlint
-
-## Markdown Preview Enhanced https://open-vsx.org/extension/shd101wyy/markdown-preview-enhanced
-RUN wget https://open-vsx.org/api/shd101wyy/markdown-preview-enhanced/0.6.3/file/shd101wyy.markdown-preview-enhanced-0.6.3.vsix && \
-unzip shd101wyy.markdown-preview-enhanced-0.6.3.vsix "extension/*" &&\
-mv extension /opt/code-oss/extensions/markdown-preview-enhanced
-
-## PlantUML https://open-vsx.org/extension/jebbs/plantuml
-RUN wget https://open-vsx.org/api/jebbs/plantuml/2.17.4/file/jebbs.plantuml-2.17.4.vsix && \
-unzip jebbs.plantuml-2.17.4.vsix "extension/*" &&\
-mv extension /opt/code-oss/extensions/plantuml
-
-## Draw.io Integration https://open-vsx.org/extension/hediet/vscode-drawio
-RUN wget https://open-vsx.org/api/hediet/vscode-drawio/1.6.4/file/hediet.vscode-drawio-1.6.4.vsix && \
-unzip hediet.vscode-drawio-1.6.4.vsix "extension/*" &&\
-mv extension /opt/code-oss/extensions/vscode-drawio
 
 ## Git Graph https://open-vsx.org/extension/mhutchie/git-graph
 RUN wget https://open-vsx.org/api/mhutchie/git-graph/1.30.0/file/mhutchie.git-graph-1.30.0.vsix && \
