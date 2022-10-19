@@ -1,0 +1,24 @@
+name: CI with Docker
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  REGION: asia-east1
+  PROJECT_ID: das-ct-lab
+  REPOSITORY: code-oss
+  IMAGE_NAME: code-oss-quarkus
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Build Docker Image
+      run: docker build -f Dockerfile.quarkus -t $REGION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$IMAGE_NAME:$GITHUB_RUN_NUMBER
